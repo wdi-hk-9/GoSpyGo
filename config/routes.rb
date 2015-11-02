@@ -1,4 +1,14 @@
 Rails.application.routes.draw do
+  get 'readings/index'
+
+  get 'readings/show'
+
+  get 'readings/new'
+
+  get 'sensors/index'
+
+  get 'sensors/show'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
