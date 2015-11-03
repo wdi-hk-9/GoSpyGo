@@ -23,12 +23,11 @@ class WebsocketBackend
       # this echos back the message received from the client
       # event.data can be sent as text (String) or binary (Array)
       ws.on :message do |event|
+        p [:message, event.data]
+        @clients.each {|client| client.send(event.data)}
         # parse the message
         # if (isRequest = true) {broadcast to all robots}
         # if (isRequest = false) {broadcast to all clients}
-
-        # p [:message, event.data]
-        # @clients.each {|client| client.send(event.data) }
       end
 
       ws.on :close do |event|
