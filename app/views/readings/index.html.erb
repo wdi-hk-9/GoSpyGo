@@ -1,2 +1,13 @@
-<h1>Readings#index</h1>
-<p>Find me in app/views/readings/index.html.erb</p>
+
+<h1>All Reading in #<%= params[:sensor_id] %>, <%= Sensor.find(params[:sensor_id]).sensorType%></h1>
+
+
+<% @readings.each do |reading| %>
+<ul>
+  <li>Reading: <%= reading.value %></li>
+  <li>Created at: <%= reading.created_at %></li>
+</ul>
+<% end %>
+
+<%= link_to "Back to All Sensors", sensors_path %>
+<%= link_to "MOCK UP PI Input", new_sensor_reading_path %>
