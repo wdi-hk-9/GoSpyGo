@@ -2,3 +2,4 @@ Current Location: <%= link_to "Dashboard", user_sensors_path(params[:user_id]) %
 
 <h1>Reading</h1>
 <p>Value: <%= @reading.value %></p>
+<p>Fetch Time: <%= @reading.created_at %></p>

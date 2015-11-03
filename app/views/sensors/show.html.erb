@@ -1,5 +1,5 @@
 Current Location: <%= link_to "Dashboard", user_sensors_path(params[:user_id]) %> > <b>Sensor Spec</b>
 
-<h1>Sensors Specification</h1>
+<h1> <%= @sensor.sensorType.capitalize %> Sensors Specification</h1>
 <p>ID: <%= @sensor.id %></p>
 <p>Sensor Type: <%= @sensor.sensorType %></p>

@@ -29,13 +29,10 @@ class WebsocketBackend
           # -> UPDATE DATABASE
           # -> send message to all clients
           @clients.each {|client| client.send(event.data)}
-
         elsif @parsed_msg['requester'] == "user" ##broadcast to all robots
 
         end
 
-        # if (isRequest = true) {broadcast to all robots}
-        # if (isRequest = false) {broadcast to all clients}
       end
 
       ws.on :close do |event|

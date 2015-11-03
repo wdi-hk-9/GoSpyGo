@@ -4,8 +4,13 @@ Current Location: <b>Dashboard</b>
 
 <ul>
 <% @sensors.each do |sensor| %>
-  <li><b>ID</b>: <%= link_to sensor.id, user_sensor_readings_path(params[:user_id],sensor.id) %><br/><b>Type</b>: <%= sensor.sensorType %><br/>
+  <li>
+    <b>ID</b>: <%= sensor.id %> | <b>Type</b>: <%= sensor.sensorType %><br/>
+  <%= link_to image_tag(fetch_sensor_image(sensor.sensorType), :width=>'100px'), user_sensor_readings_path(params[:user_id],sensor.id) %>
     <%= link_to "See Sensor Spec", user_sensor_path(params[:user_id], sensor.id) %>
+  <div class="make-switch">
+    <input type="checkbox" class="switch_state" id= <%= sensor.id.to_s + '_sensor' %> checked>
+  </div>
 </li>
 <% end %>
 <ul>
