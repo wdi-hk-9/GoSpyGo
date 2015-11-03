@@ -1,21 +1,29 @@
+# require 'time'
+
 class ReadingsController < ApplicationController
   def index
-    @readings = Reading.all
+    @readings = Reading.where(sensor_id: params[:sensor_id])
+    @sensor = Sensor.find(params[:sensor_id])
+    @user = User.find(params[:user_id])
   end
 
   def show
+    @reading = Reading.find(params[:id])
   end
 
   def new
     @reading = Reading.new
     @sensor = Sensor.find(params[:sensor_id])
+    @user = User.find(params[:user_id])
+    @time = Time.now
   end
 
   def create
     @reading = Reading.create(reading_params)
     @reading.sensor = Sensor.find(params[:sensor_id])
-    @reading.save
-    redirect_to "index"
+    if @reading.save
+      redirect_to "readings#index"
+    end
   end
 
   private

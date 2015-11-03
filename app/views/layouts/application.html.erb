@@ -1,13 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>ProjectPetulah</title>
+  <title>GoSpyGo</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
+<!-- later with login changed to sessions[user_id]-->
+<% if params[:user_id] %>
+  <p> Hello! <%= link_to User.find(params[:user_id]).username.capitalize, user_path(params[:user_id]) %>
+   <%= link_to "Switch user", "/" %></p>
+<% end %>
 <%= yield %>
 
 </body>

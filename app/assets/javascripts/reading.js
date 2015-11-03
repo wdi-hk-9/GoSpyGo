@@ -22,15 +22,24 @@ $(function(){
     });
 
     $("#new_reading").on("submit", function(event) {
+      // Case 1: Connection Error
       if (typeof ws == 'undefined'){
         console.log("Not Connceted")
         event.preventDefault();
       }else{
+        // Case 2: Update Database(thru form) + Send Message to All Client(in backend)
         var value = $("#reading_value").val();
-
-        ws.send(JSON.stringify({
-          value: value,
-        }));
+        var fetchStatus = $("#attribute_tracker").data();
+        ws.send(JSON.stringify(
+          {
+            user_id: fetchStatus.userId,
+            sensor_type: fetchStatus.sensorType,
+            sensor_id: fetchStatus.sensorId,
+            time: fetchStatus.time,
+            requester: fetchStatus.requester,
+            reading: value
+          })
+        );
       }
     });
 

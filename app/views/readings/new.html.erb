@@ -1,7 +1,19 @@
-<%= javascript_include_tag "reading_only" %>
+Current Location: <%= link_to "Dashboard", user_sensors_path(params[:user_id]) %> > <%= link_to Sensor.find(params[:sensor_id]).sensorType.capitalize + ' Sensor', user_sensor_readings_path %> > <b>New Reading</b>
 
-<h1>Readings#new</h1>
-<button type='button' id="start_connection">Start Connection</button>
-<button type='button' id="end_connection">End Connection</button>
+<h1>New Reading</h1>
+
+<!-- For Mock Up Purpose. Production Change to Auto-start -->
+<button type='button' id="start_connection">Start Websocket Connection</button>
+<button type='button' id="end_connection">End Websocket Connection</button>
 <%= render 'form' %>
 
+
+<!-- this is to mock up the returning message from Python, so requester = "robot"-->
+<%= content_tag "div", id: "attribute_tracker", :data=> {
+    user_id: @sensor.user.id,
+    sensor_type: @sensor.sensorType,
+    sensor_id: @sensor.id,
+    time: @time, #time = python updated time
+    requester: "robot"
+  } do %>
+<% end%>

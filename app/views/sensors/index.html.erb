@@ -1,8 +1,11 @@
-<h1>Sensors#index</h1>
-<p>Find me in app/views/sensors/index.html.erb</p>
+Current Location: <b>Dashboard</b>
+
+<h1>Dashboard for <%= User.find(params[:user_id]).username%></h1>
 
 <ul>
 <% @sensors.each do |sensor| %>
-  <li>ID: <%= link_to sensor.id, sensor_readings_path(sensor.id) %> | Type: <%= sensor.sensorType %></li>
+  <li><b>ID</b>: <%= link_to sensor.id, user_sensor_readings_path(params[:user_id],sensor.id) %><br/><b>Type</b>: <%= sensor.sensorType %><br/>
+    <%= link_to "See Sensor Spec", user_sensor_path(params[:user_id], sensor.id) %>
+</li>
 <% end %>
 <ul>

@@ -1,2 +1,4 @@
-<h1>Readings#show</h1>
-<p>Find me in app/views/readings/show.html.erb</p>
+Current Location: <%= link_to "Dashboard", user_sensors_path(params[:user_id]) %> > <%= link_to Sensor.find(params[:sensor_id]).sensorType.capitalize + ' Sensor', user_sensor_readings_path%> > <b>Reading #<%= @reading.id %></b>
+
+<h1>Reading</h1>
+<p>Value: <%= @reading.value %></p>

@@ -1,19 +1,12 @@
 Rails.application.routes.draw do
-  # resources :readings, only: [:index, :show, :new]
 
-  resources :sensors, only: [:index, :show]
+  get '/', to: "users#index"
 
-  resources :sensors, only: [:index, :show] do
-    resources :readings, only: [:index, :show, :new, :create]
+  resources :users, only: [:index, :show] do
+    resources :sensors, only: [:index, :show] do
+      resources :readings, only: [:index, :show, :new, :create]
+    end
   end
-  # get 'readings/index'
 
-  # get 'readings/show'
-
-  # get 'readings/new'
-
-  # get 'sensors/index'
-
-  # get 'sensors/show'
 
 end

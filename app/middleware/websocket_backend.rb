@@ -23,9 +23,17 @@ class WebsocketBackend
       # this echos back the message received from the client
       # event.data can be sent as text (String) or binary (Array)
       ws.on :message do |event|
-        p [:message, event.data]
-        @clients.each {|client| client.send(event.data)}
+        @parsed_msg = JSON.parse(event.data)
         # parse the message
+        if @parsed_msg['requester'] == "robot" ##broadcast to all clients
+          # -> UPDATE DATABASE
+          # -> send message to all clients
+          @clients.each {|client| client.send(event.data)}
+
+        elsif @parsed_msg['requester'] == "user" ##broadcast to all robots
+
+        end
+
         # if (isRequest = true) {broadcast to all robots}
         # if (isRequest = false) {broadcast to all clients}
       end

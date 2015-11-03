@@ -1,13 +1,13 @@
+Current Location: <%= link_to "Dashboard", user_sensors_path(@user.id) %> > <b><%=  @sensor.sensorType.capitalize + ' Sensor'%> </b>
 
-<h1>All Reading in #<%= params[:sensor_id] %>, <%= Sensor.find(params[:sensor_id]).sensorType%></h1>
+<h1>All Reading for #<%= @sensor.id %>, <%= @sensor.sensorType + 'sensor' %></h1>
 
+<%= link_to "Mock Up Raspberry Pi Input", new_user_sensor_reading_path %>
 
 <% @readings.each do |reading| %>
 <ul>
-  <li>Reading: <%= reading.value %></li>
+  <li>Reading: <%= link_to reading.value, user_sensor_reading_path(@user.id, @sensor.id,reading.id) %></li>
   <li>Created at: <%= reading.created_at %></li>
 </ul>
 <% end %>
 
-<%= link_to "Back to All Sensors", sensors_path %>
-<%= link_to "MOCK UP PI Input", new_sensor_reading_path %>
