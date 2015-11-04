@@ -1,24 +1,20 @@
 // create a websocket connection to the Rails webserver
-$(function(){
   var uri = "ws://" + window.document.location.host + "/",
   ws = ws || new WebSocket(uri);
 
   ws.onmessage = function (message){
-    var command = JSON.parse(message.data),
-      // fetchStatus retrieves data encoded in the url of the current page.
-      // We use this to pass the user_id and sensor_id of the current user into the JS scope
-      fetchStatus = $("#attribute_tracker").data(),
-      my_user_id = fetchStatus.userId,
-      my_sensor_id = fetchStatus.sensorId
-
-
+    var command = JSON.parse(message.data);
+    // fetchStatus retrieves data encoded in the url of the current page.
+    // We use this to pass the user_id and sensor_id of the current user into the JS scope
+    fetchStatus = $("#attribute_tracker").data();
+    my_user_id = fetchStatus.userId;
+    my_sensor_id = fetchStatus.sensorId;
     // if the command is an update from a robot and is meant for this user
     if (command.requester === "robot" && command.user_id === my_user_id) {
       // update the database
       var uriString = "/users/" + my_user_id + "/sensors/" + my_sensor_id
         + "/readings/";
       uriString = encodeURI(uriString);
-
 
       // invokes #readings#create in Rails, saves the reading into the database
       $.ajax({
@@ -37,18 +33,18 @@ $(function(){
         }
       });
     }
-  }
+  };
 
   ws.onopen = function (){
     console.log('connected to websocket on ' + uri);
-  }
+  };
 
+$(function(){
   // this event sends the JSON request to Rails over WebSocket
-
   $("#fetch-data").on("click", function() {
     $("#realtime_value").show();
     var fetchStatus = $("#attribute_tracker").data();
-    console.log(ws)
+
     ws.send(JSON.stringify(
       {
         user_id: fetchStatus.userId, // globally available id

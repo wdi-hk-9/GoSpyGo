@@ -31,6 +31,10 @@ class WebsocketBackend
         ws = nil
       end
 
+      ws.on :error do |event|
+        p [:error, event.data]
+      end
+
       # Return async Rack response
       ws.rack_response
 

@@ -9,9 +9,8 @@ Current Location: <%= link_to "Dashboard", user_sensors_path(@user.id) %> > <b><
   <a class="btn btn-danger btn-circle" id="fetch-data">FETCH<br/>READING<br/>NOW!</a>
   <br/><a href="#" class="btn btn-default" id="show-history">SHOW HISTORY</a>
  </div>
-
 <%= content_tag "div", id: "attribute_tracker", :data=> {
-    user_id: user_as_requester,
+    user_id: @sensor.user_id,
     sensor_type: @sensor.sensorType,
     sensor_id: @sensor.id
   } do %>
