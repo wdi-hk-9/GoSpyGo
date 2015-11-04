@@ -8,18 +8,19 @@
   <h1><%= @sensor.sensorType.upcase + ' SENSOR' %></h1>
   <img src=<%= image_url(fetch_sensor_image(@sensor.sensorType))%> width="200px">
 </div>
-
-<div id="reading-list">
-  <table class="table table-hover">
-    <thead>
-      <th>Fetch Time</th>
-      <th>Reading</th>
-    </thead>
-    <% @readings.each do |reading| %>
-    <tr>
-      <td class="col-xs-3 col-md-3"><%= reading.created_at %></td>
-      <td class="col-xs-3 col-md-2"><%= link_to reading.value, user_sensor_reading_path(@user.id, @sensor.id,reading.id) %></td>
-    </tr>
-    <% end %>
-  </table>
+<div class="container-fluid">
+  <div id="reading-list">
+    <table class="table table-hover">
+      <thead>
+        <th>Fetch Time</th>
+        <th>Reading</th>
+      </thead>
+      <% @readings.each do |reading| %>
+      <tr>
+        <td class="col-xs-3 col-md-3 col-lg-3 col-lg-offset-3"><%= reading.created_at %></td>
+        <td class="col-xs-3 col-md-2 col-lg-3 col-lg-offset-3"><%= reading.value%></td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
 </div>

@@ -10,29 +10,29 @@
   <% @sensors.each do |sensor| %>
     <div class="sensor-box">
       <div class="row">
-        <div class="col-xs-2 col-md-2 text-center">
+        <div class="col-xs-3 col-sm-2 col-md-2 text-center">
             <%= link_to image_tag(fetch_sensor_image(sensor.sensorType), :width=>'100px'), user_sensor_readings_path(params[:user_id],sensor.id) %>
         </div>
-        <div class="col-xs-7 col-md-8">
+        <div class="col-xs-5 col-sm-7 col-md-8">
           <h2><%= sensor.sensorType.upcase %></h2>
 <!--           <b>ID</b>: <%= sensor.id %>
             <%= link_to "See Sensor Spec", user_sensor_path(params[:user_id], sensor.id) %> -->
           <p><a class="btn btn-default show-five" id='<%=sensor.sensorType%>-<%=sensor.id%>-show_five'>SHOW LAST 5 RECORD</a>
-          <%= link_to "SHOW ALL HISTORY", user_sensor_readings_path(params[:user_id],sensor.id), class:'btn btn-default' %>
+          <%= link_to "SHOW ALL HISTORY", user_sensor_readings_path(params[:user_id],sensor.id), class:'btn btn-default show-all' %>
           </p>
         </div>
-        <div class="col-xs-2 col-md-2">
+        <div class="col-xs-3 col-sm-1 col-md-2">
           <a class="btn btn-danger btn-circle dashboard-btn" id='<%=sensor.sensorType%>-<%= sensor.id%>-btn'>FETCH<br/>READING<br/>NOW!</a>
         </div>
       </div>
       <div class="row show-reading">
         <table class="table">
           <tr>
-            <td>Reading</td>
-            <td id='<%=sensor.sensorType%>-<%= sensor.id%>-reading'>50</td>
+            <td class="text-right">Reading :</td>
+            <td id='<%=sensor.sensorType%>-<%= sensor.id%>-reading'>...fetching...</td>
           </tr>
           <tr>
-            <td>Fetch Date</td>
+            <td class="text-right">Fetch Date :</td>
             <td id='<%=sensor.sensorType%>-<%= sensor.id%>-time'><%= sensor.created_at %></td>
           </tr>
         </table>
