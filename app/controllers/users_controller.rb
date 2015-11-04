@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @sensors = Sensor.where(user_id: params[:id])
   end
 
   def new
@@ -15,7 +16,7 @@ class UsersController < ApplicationController
   def create
     @user = User.create(user_params)
     if @user.save
-      redirect_to '/', :flash =>{:success=> "User " + @user.username + " has been created"}
+      redirect_to '/', :flash =>{:success=> "Welcome to GoSpyGo! You can login to your account to play with the robots!"}
     else
       @errors = @user.errors.full_messages
       render 'new'

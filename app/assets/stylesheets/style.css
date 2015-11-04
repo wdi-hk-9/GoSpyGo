@@ -1,9 +1,14 @@
 body{
-  font-family: 'Nunito';
-  margin: 10px;
+  font-family: 'Open Sans', sans-serif;
+  /*font-family: 'Nunito';*/
+  /*margin: 10px;*/
 }
 img:hover{
   opacity:0.5;
+}
+footer{
+  margin-top:30px;
+  text-align:center;
 }
 .sensor-box{
   border-radius:5px;
@@ -27,7 +32,7 @@ img:hover{
   font-size:60px;
   font-weight:bold;
 }
-.dashboard-header{
+.dashboard-header, .profile-header{
   text-align:center;
   /*background:#d0021b;*/
   padding:10px;
@@ -38,6 +43,9 @@ img:hover{
 .dashboard-header *{
   font-size:60px;
   font-weight:bold;
+}
+.profile-header *{
+  font-size:30px;
 }
 .option-bar{
   text-align:center;
@@ -74,4 +82,68 @@ img:hover{
   padding:10px;
   border-radius:10px;
   background:white;
+}
+a.logo{
+  font-family: 'Open Sans', sans-serif;
+  font-size:40px;
+  font-weight:800;
+  color:#4a4a4a !important;
+}
+.navbar-toggle .icon-bar{
+  background:#ffffff;
+  width:30px;
+  height:5px;
+}
+/*.navbar-collapse *{
+  vertical-align: bottom
+}*/
+ul.nav{
+  padding:10px;
+}
+.welcome-bar{
+  background:#f5a623;
+  padding:10px;
+  border-radius:5px;
+}
+.navbar-nav *{
+  color:#4a4a4a;
+}
+.navbar-nav *:hover{
+  border-radius:5px;
+}
+#custom-nav{
+  background:rgba( 208, 1, 27, 0.8);
+  padding:10px;
+  border:0px;
+  border-radius:0px;
+}
+.navbar-text, .navbar-nav{
+  font-family:'Open Sans', sans-serif;
+  font-size:17px;
+}
+#reading-list{
+  margin:0px 50px;
+}
+.user_form{
+  background:#f5a623;
+  padding:20px;
+  border-radius:10px;
+  max-width:400px;
+  line-height:25px;
+}
+.user_profile{
+  max-width:500px;
+
+}
+p.join_header {
+  text-align:center;
+  font-size: 25px;
+  padding:25px 0px;
+  background:rgba( 208, 1, 27, 0.63);
+  border-radius:10px;
+  color:white;
+}
+.alert{
+  text-align:center;
+  font-size:15px;
 }

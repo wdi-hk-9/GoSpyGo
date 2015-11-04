@@ -6,13 +6,13 @@ class SessionsController < ApplicationController
     user = User.find_by_username(params[:username])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to user_sensors_path(user.id), notice: "logged in!"
+      redirect_to user_sensors_path(user.id)
     elsif user
-      flash.now.alert = "Wrong Password"
-      render 'new'
+      flash[:danger] = "Wrong Password. Please Login again or Sign Up Today"
+      redirect_to '/'
     else
-      flash.now.alert = "User Not Found"
-      render 'new'
+      flash[:danger] = "User Not Found. Not a member? Sign Up Today!"
+      redirect_to '/'
     end
   end
 

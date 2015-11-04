@@ -41,7 +41,6 @@
   // testing MODE
   ws.onmessage = function (message){
     var command = JSON.parse(message.data);
-    console.log(command);
     fetchStatus = $("#attribute_tracker").data();
     my_user_id = fetchStatus.userId;
     my_sensor_id = fetchStatus.sensorId;
@@ -49,7 +48,6 @@
       var uriString = "/users/" + my_user_id + "/sensors/" + my_sensor_id
         + "/readings/";
       uriString = encodeURI(uriString);
-      console.log("COMMAND reading" + command.reading);
       $.ajax({
         url: uriString,
         method: 'POST',
@@ -59,7 +57,6 @@
         success: function(response, status){
           // render the reading in the view
           var dom_target = response.sensor_type + '-' + response.sensor_id;
-          console.log(response)
           $("#" + dom_target + '-reading').html(response.reading_value);
           $("#" + dom_target + '-time').html(response.time);
         },

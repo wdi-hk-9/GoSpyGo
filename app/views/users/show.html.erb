@@ -1,7 +1,39 @@
-Current Location: <%= link_to "Dashboard", user_sensors_path(@user.id) %> > <b>User Profile</b>
-<h1>User Profile</h1>
-
-<ul>
-  <li>ID: <%= @user.id %></li>
-  <li>username: <%= @user.username %></li>
+<ul class="breadcrumb">
+  <li><%= link_to 'Home', user_sensors_path(current_user.id)%></li>
+  <li class="active">Profile</li>
 </ul>
+
+<div class="container-fluid">
+  <div class="user_profile center-block">
+    <div class="profile-header">
+      <h1>Profile Overview</h1>
+    </div>
+    <table class="table table-hover">
+      <tr>
+        <td class="col-sm-4 col-md-4">username: </td>
+        <td><%= @user.username %></td>
+      </tr>
+      <tr>
+        <td>Robot Name: </td>
+        <td><input type='text' value="my-robot-1"> <a class="btn btn-default">save</a></td>
+      </tr>
+      <tr>
+        <td>no of sensors: </td>
+        <td><%= @sensors.length %></td>
+      </tr>
+      <tr>
+        <td>list of sensors: </td>
+        <td>
+          <ul>
+            <% @sensors.each do |sensor| %>
+              <li>
+                <%= link_to sensor.sensorType, user_sensor_readings_path(@user.id, sensor.id) %>
+              </li>
+            <% end %>
+          </ul>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+</div>

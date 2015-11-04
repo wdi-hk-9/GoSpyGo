@@ -1,9 +1,11 @@
+  <ul class="breadcrumb">
+    <li><%= link_to 'Home', user_sensors_path(current_user.id)%></li>
+    <li class="active">Dashboard</a></li>
+  </ul>
 <div class="dashboard-header">
   <h1>DASHBOARD</h1>
 </div>
-<p>Current Location: <b>Dashboard</b></p>
-<h3>You have <%= @sensors.length %> sensor<%= 's' if @sensors.length > 1 %></h3>
-
+<!-- <p>Current Location: <b>Dashboard</b></p> -->
 <div class="container">
   <% @sensors.each do |sensor| %>
     <div class="sensor-box">
@@ -13,10 +15,11 @@
         </div>
         <div class="col-xs-7 col-md-8">
           <h2><%= sensor.sensorType.upcase %></h2>
-          <b>ID</b>: <%= sensor.id %>
-            <%= link_to "See Sensor Spec", user_sensor_path(params[:user_id], sensor.id) %>
-          <p><%= link_to "SHOW ALL HISTORY", user_sensor_readings_path(params[:user_id],sensor.id), class:'btn btn-default' %>
-          <a class="btn btn-default show-five" id='<%=sensor.sensorType%>-<%=sensor.id%>-show_five'>SHOW LAST 5</a></p>
+<!--           <b>ID</b>: <%= sensor.id %>
+            <%= link_to "See Sensor Spec", user_sensor_path(params[:user_id], sensor.id) %> -->
+          <p><a class="btn btn-default show-five" id='<%=sensor.sensorType%>-<%=sensor.id%>-show_five'>SHOW LAST 5 RECORD</a>
+          <%= link_to "SHOW ALL HISTORY", user_sensor_readings_path(params[:user_id],sensor.id), class:'btn btn-default' %>
+          </p>
         </div>
         <div class="col-xs-2 col-md-2">
           <a class="btn btn-danger btn-circle dashboard-btn" id='<%=sensor.sensorType%>-<%= sensor.id%>-btn'>FETCH<br/>READING<br/>NOW!</a>
