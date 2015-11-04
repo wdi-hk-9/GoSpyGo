@@ -13,7 +13,6 @@ gem 'uglifier', '>= 1.3.0'
 gem 'bcrypt', '~> 3.1.7'
 gem 'jquery-rails'
 gem 'bootstrap-sass'
-
 group :development, :test do
   gem 'better_errors'
   gem 'pry-rails'

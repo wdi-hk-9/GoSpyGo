@@ -11,11 +11,32 @@
 </head>
 <body>
 
-<!-- later with login changed to sessions[user_id]-->
-<% if params[:user_id] %>
-  <p> Hello! <%= link_to User.find(params[:user_id]).username.capitalize, user_path(params[:user_id]) %>
-   <%= link_to "Switch user", "/" %></p>
+
+<% if logged_in? %>
+  <p>Hello! <%= current_user.username %>
+  <%= link_to 'USER PROFILE', user_path(current_user.id) %>
+  <%= link_to 'LOG ME OUT', session_path(current_user.id), method: "DELETE" %></p>
+<% else %>
+  <%= link_to 'LOG IN', login_path %>
 <% end %>
+
+
+<% if @errors %>
+  <ul>
+    <% @errors.each do |error| %>
+    <li><%= error %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+
+<% flash.each do |name, message| %>
+   <div class="flash-message flash-message-<%= name %>">
+   <%= message %>
+   </div>
+<% end %>
+
+
 <%= yield %>
 
 </body>

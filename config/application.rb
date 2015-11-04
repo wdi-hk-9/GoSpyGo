@@ -21,7 +21,6 @@ Bundler.require(*Rails.groups)
 module ProjectGoSpyGo
   class Application < Rails::Application
     config.active_record.raise_in_transactional_callbacks = true
-    config.assets.precompile += %w( reading_only.js )
     config.middleware.use "WebsocketBackend"
 
   end

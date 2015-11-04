@@ -3,5 +3,69 @@ body{
   margin: 10px;
 }
 img:hover{
-  background:red;
+  opacity:0.5;
+}
+.sensor-box{
+  border-radius:5px;
+  border: 3px solid black;
+  background: #ffff00;
+  padding:10px;
+
+  margin: 20px 0px;
+}
+.sensor-box * > h2 {
+  font-size: 50px;
+  font-weight:bold;
+}
+#realtime_value {
+  text-align:center;
+  padding:10px 40px;
+  border-radius:5px;
+  border: 3px solid black;
+  margin: 10px;
+}
+#reading-value-box{
+  font-size:50px;
+}
+.sensor-type-header{
+  background:#ffff00;
+  padding:20px;
+  text-align:center;
+  margin:10px;
+}
+.sensor-type-header * {
+  font-size:60px;
+  font-weight:bold;
+}
+.dashboard-header{
+  text-align:center;
+  /*background:#d0021b;*/
+  padding:10px;
+  color:#d0021b;
+  border-radius:10px;
+  margin-bottom:5px;
+}
+.dashboard-header *{
+  font-size:60px;
+  font-weight:bold;
+}
+.option-bar{
+  text-align:center;
+}
+
+.btn-circle {
+  width: 120px;
+  height: 120px;
+  text-align: center;
+  padding: 16px;
+  line-height: 1.42;
+  border-radius: 60px;
+  font-size:17px;
+  margin-bottom:10px;
+  border:8px solid black;
+}
+#fetch-data:hover{
+  /*border:5px solid black;*/
+  background:white;
+  color:black;
 }

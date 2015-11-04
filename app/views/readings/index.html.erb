@@ -1,13 +1,44 @@
 Current Location: <%= link_to "Dashboard", user_sensors_path(@user.id) %> > <b><%=  @sensor.sensorType.capitalize + ' Sensor'%> </b>
 
-<h1>All Reading for #<%= @sensor.id %>, <%= @sensor.sensorType + 'sensor' %></h1>
+<div class="sensor-type-header">
+  <h1><%= @sensor.sensorType.upcase + ' SENSOR' %></h1>
+</div>
+<!-- <button type="button" class="btn btn-danger" id="fetch-data">FETCH READING NOW!</button>
+ -->
+ <div class="option-bar">
+  <a class="btn btn-danger btn-circle" id="fetch-data">FETCH<br/>READING<br/>NOW!</a>
+  <br/><a href="#" class="btn btn-default" id="show-history">SHOW HISTORY</a>
+ </div>
 
-<%= link_to "Mock Up Raspberry Pi Input", new_user_sensor_reading_path %>
+<%= content_tag "div", id: "attribute_tracker", :data=> {
+    user_id: user_as_requester,
+    sensor_type: @sensor.sensorType,
+    sensor_id: @sensor.id
+  } do %>
+  <% end %>
 
-<% @readings.each do |reading| %>
-<ul>
-  <li>Reading: <%= link_to reading.value, user_sensor_reading_path(@user.id, @sensor.id,reading.id) %></li>
-  <li>Created at: <%= reading.created_at %></li>
-</ul>
-<% end %>
+<div id="realtime_value">
+  <div class="row" id="reading-value-box">
+    50
+  </div>
+  <div class="row">
+    <span>Fetched on </span>
+    <span id="reading-time-box"><%= @sensor.created_at %></span>
+  </div>
+</div>
 
+
+<div id="reading-list">
+  <table class="table table-hover">
+    <thead>
+      <th>Reading</th>
+      <th>Fetch Time</th>
+    </thead>
+    <% @readings.each do |reading| %>
+    <tr>
+      <td><%= link_to reading.value, user_sensor_reading_path(@user.id, @sensor.id,reading.id) %></td>
+      <td><%= reading.created_at %></td>
+    </tr>
+    <% end %>
+  </table>
+</div>
