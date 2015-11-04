@@ -58,7 +58,7 @@
         success: function(response, status){
           // render the reading in the view
           var dom_target = response.sensor_type + '-' + response.sensor_id;
-          $("#" + dom_target + '-reading').html(command.reading);
+          $("#" + dom_target + '-reading').html(response.reading);
           $("#" + dom_target + '-time').html(response.time);
         },
         error: function(response, status){
