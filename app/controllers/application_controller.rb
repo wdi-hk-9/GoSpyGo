@@ -6,13 +6,13 @@ class ApplicationController < ActionController::Base
 
   def fetch_sensor_image(sensorType)
     sensorArray = {
-      'light': "light.png",
-      'temperature': "temp.png",
-      'airquality': "airquality.png",
-      'gas': "gas.png",
-      'sound': "sound.png",
-      'ultrasonic': "ultrasonic.png",
-      'humidity': "humidity.png"
+      light: "light.png",
+      temperature: "temp.png",
+      airquality: "airquality.png",
+      gas: "gas.png",
+      sound: "sound.png",
+      ultrasonic: "ultrasonic.png",
+      humidity: "humidity.png"
     }
     sensorArray[sensorType.to_sym]
   end

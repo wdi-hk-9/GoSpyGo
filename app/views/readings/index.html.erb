@@ -6,25 +6,9 @@ Current Location: <%= link_to "Dashboard", user_sensors_path(@user.id) %> > <b><
 <!-- <button type="button" class="btn btn-danger" id="fetch-data">FETCH READING NOW!</button>
  -->
  <div class="option-bar">
-  <a class="btn btn-danger btn-circle" id="fetch-data">FETCH<br/>READING<br/>NOW!</a>
+  <!-- <a class="btn btn-danger btn-circle" id="fetch-data">FETCH<br/>READING<br/>NOW!</a> -->
   <br/><a href="#" class="btn btn-default" id="show-history">SHOW HISTORY</a>
  </div>
-<%= content_tag "div", id: "attribute_tracker", :data=> {
-    user_id: @sensor.user_id,
-    sensor_type: @sensor.sensorType,
-    sensor_id: @sensor.id
-  } do %>
-  <% end %>
-
-<div id="realtime_value">
-  <div class="row" id="reading-value-box">
-    50
-  </div>
-  <div class="row">
-    <span>Fetched on </span>
-    <span id="reading-time-box"><%= @sensor.created_at %></span>
-  </div>
-</div>
 
 
 <div id="reading-list">

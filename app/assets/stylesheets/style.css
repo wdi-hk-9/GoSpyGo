@@ -17,16 +17,6 @@ img:hover{
   font-size: 50px;
   font-weight:bold;
 }
-#realtime_value {
-  text-align:center;
-  padding:10px 40px;
-  border-radius:5px;
-  border: 3px solid black;
-  margin: 10px;
-}
-#reading-value-box{
-  font-size:50px;
-}
 .sensor-type-header{
   background:#ffff00;
   padding:20px;
@@ -68,4 +58,20 @@ img:hover{
   /*border:5px solid black;*/
   background:white;
   color:black;
+}
+.show-reading{
+  margin:10px 70px;
+  padding:10px;
+  border-radius:10px;
+  background:white;
+  font-size:20px;
+}
+.show-reading *{
+  font-size:20px;
+}
+.show-five-list{
+  margin:10px 70px;
+  padding:10px;
+  border-radius:10px;
+  background:white;
 }
