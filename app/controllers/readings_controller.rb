@@ -26,7 +26,7 @@ class ReadingsController < ApplicationController
     reading.sensor = Sensor.find(params[:sensor_id])
 
     if reading.save
-      render json: {msg: "reading created", time: reading.created_at}, status: 200
+      render json: {msg: "reading created", time: reading.created_at, sensor_id: reading.sensor.id, sensor_type:reading.sensor.sensorType}, status: 200
     else
       render json: {msg: "reading failed"}, status: 404
     end

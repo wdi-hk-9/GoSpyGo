@@ -27,6 +27,8 @@
           // render the reading in the view
           $('#reading-value-box').html(command.reading)
           $('reading-time-box').html(response.time)
+          // response.sensor_id
+          // response.sensor_type
         },
         error: function(response, status){
           $('#reading-box').html("Please retry")

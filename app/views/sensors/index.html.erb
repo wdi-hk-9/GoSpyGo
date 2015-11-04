@@ -17,7 +17,7 @@
             <%= link_to "See Sensor Spec", user_sensor_path(params[:user_id], sensor.id) %>
         </div>
         <div class="col-xs-2 col-md-3">
-          <a class="btn btn-danger btn-circle" id=<%= sensor.sensorType + '-btn' %> >FETCH<br/>READING<br/>NOW!</a>
+          <a class="btn btn-danger btn-circle" id=<%=sensor.sensorType%>-<%= sensor.id%>-btn>FETCH<br/>READING<br/>NOW!</a>
         </div>
       </div>
     </div>
