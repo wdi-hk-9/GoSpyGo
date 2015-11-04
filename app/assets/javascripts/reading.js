@@ -45,7 +45,7 @@
     fetchStatus = $("#attribute_tracker").data();
     my_user_id = fetchStatus.userId;
     my_sensor_id = fetchStatus.sensorId;
-    if (command.requester === "user" && command.user_id === my_user_id) {
+    if (command.requester === "robot" && command.user_id === my_user_id) {
       var uriString = "/users/" + my_user_id + "/sensors/" + my_sensor_id
         + "/readings/";
       uriString = encodeURI(uriString);
