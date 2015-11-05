@@ -1,2 +1,5 @@
-<h1>Sensors#show</h1>
-<p>Find me in app/views/sensors/show.html.erb</p>
+Current Location: <%= link_to "Dashboard", user_sensors_path(params[:user_id]) %> > <b>Sensor Spec</b>
+
+<h1> <%= @sensor.sensorType.capitalize %> Sensors Specification</h1>
+<p>ID: <%= @sensor.id %></p>
+<p>Sensor Type: <%= @sensor.sensorType %></p>

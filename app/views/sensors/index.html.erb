@@ -1,2 +1,66 @@
-<h1>Sensors#index</h1>
-<p>Find me in app/views/sensors/index.html.erb</p>
+  <ul class="breadcrumb">
+    <li><%= link_to 'Home', user_sensors_path(current_user.id)%></li>
+    <li class="active">Dashboard</a></li>
+  </ul>
+<div class="dashboard-header">
+  <h1>DASHBOARD</h1>
+</div>
+<!-- <p>Current Location: <b>Dashboard</b></p> -->
+<div class="container">
+  <% @sensors.each do |sensor| %>
+    <div class="sensor-box">
+      <div class="row">
+        <div class="col-xs-3 col-sm-2 col-md-2 text-center">
+            <%= link_to image_tag(fetch_sensor_image(sensor.sensorType), :width=>'100px'), user_sensor_readings_path(params[:user_id],sensor.id) %>
+        </div>
+        <div class="col-xs-5 col-sm-7 col-md-8">
+          <h2><%= sensor.sensorType.upcase %></h2>
+<!--           <b>ID</b>: <%= sensor.id %>
+            <%= link_to "See Sensor Spec", user_sensor_path(params[:user_id], sensor.id) %> -->
+          <p><a class="btn btn-default show-five" id='<%=sensor.sensorType%>-<%=sensor.id%>-show_five'>SHOW LAST 5 RECORD</a>
+          <%= link_to "SHOW ALL HISTORY", user_sensor_readings_path(params[:user_id],sensor.id), class:'btn btn-default show-all' %>
+          </p>
+        </div>
+        <div class="col-xs-3 col-sm-1 col-md-2">
+          <a class="btn btn-danger btn-circle dashboard-btn" id='<%=sensor.sensorType%>-<%= sensor.id%>-btn'>FETCH<br/>READING<br/>NOW!</a>
+        </div>
+      </div>
+      <div class="row show-reading">
+        <table class="table">
+          <tr>
+            <td class="text-right">Reading :</td>
+            <td id='<%=sensor.sensorType%>-<%= sensor.id%>-reading'>...fetching...</td>
+          </tr>
+          <tr>
+            <td class="text-right">Fetch Date :</td>
+            <td id='<%=sensor.sensorType%>-<%= sensor.id%>-time'><%= sensor.created_at %></td>
+          </tr>
+        </table>
+      </div>
+      <div id="<%=sensor.sensorType%>-<%= sensor.id%>-show_five-list" class="show-five-list">
+        <table class="table table-hover">
+          <thead>
+            <th>Reading</th>
+            <th>Fetch Time</th>
+          </thead>
+            <% @readingArray[sensor.id].each do |eachReading| %>
+            <tr>
+              <td>
+                  <%= eachReading.value %>
+              </td>
+              <td>
+                 <%= eachReading.created_at %>
+              </td>
+            </tr>
+            <% end %>
+        </table>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+
+<%= content_tag "div", id: "attribute_tracker", :data=> {
+    user_id: user_as_requester
+  } do %>
+<% end %>

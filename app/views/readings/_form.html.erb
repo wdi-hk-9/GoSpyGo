@@ -1,0 +1,7 @@
+<%= form_for([@user,@sensor, @reading], :html=> {:id=>"new_reading"}) do |f| %>
+  <%= f.label :value %>
+  <%= f.text_field :value %>
+  <br/>
+  <%= f.submit %>
+<% end %>
+

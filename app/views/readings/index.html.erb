@@ -1,2 +1,26 @@
-<h1>Readings#index</h1>
-<p>Find me in app/views/readings/index.html.erb</p>
+<ul class="breadcrumb">
+  <li><%= link_to 'Home', user_sensors_path(current_user.id)%></li>
+  <li><%= link_to 'Dashboard', user_sensors_path(@user.id) %></li>
+  <li class="active"><%=  @sensor.sensorType.capitalize + ' Sensor'%></li>
+</ul>
+
+<div class="sensor-type-header">
+  <h1><%= @sensor.sensorType.upcase + ' SENSOR' %></h1>
+  <img src=<%= image_url(fetch_sensor_image(@sensor.sensorType))%> width="200px">
+</div>
+<div class="container-fluid">
+  <div id="reading-list">
+    <table class="table table-hover">
+      <thead>
+        <th>Fetch Time</th>
+        <th>Reading</th>
+      </thead>
+      <% @readings.each do |reading| %>
+      <tr>
+        <td class="col-xs-3 col-md-3 col-lg-3 col-lg-offset-3"><%= reading.created_at %></td>
+        <td class="col-xs-3 col-md-2 col-lg-3 col-lg-offset-3"><%= reading.value%></td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

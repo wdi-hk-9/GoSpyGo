@@ -1,2 +1,15 @@
-<h1>Readings#new</h1>
-<p>Find me in app/views/readings/new.html.erb</p>
+Current Location: <%= link_to "Dashboard", user_sensors_path(params[:user_id]) %> > <%= link_to Sensor.find(params[:sensor_id]).sensorType.capitalize + ' Sensor', user_sensor_readings_path %> > <b>New Reading</b>
+
+<h1>New Reading</h1>
+
+<!-- For Mock Up Purpose. Production Change to Auto-start -->
+<button type='button' id="start_connection">Start Websocket Connection</button>
+<button type='button' id="end_connection">End Websocket Connection</button>
+
+<div class="make-switch">
+    <input type="checkbox" class="switch_state" id='socket_switch' checked>
+</div>
+<%= render 'form' %>
+
+<!-- this is to mock up the returning message from Python, so requester = "robot"-->
+

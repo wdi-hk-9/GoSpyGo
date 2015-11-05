@@ -20,15 +20,9 @@ class WebsocketBackend
         @clients << ws
       end
 
-      # this echos back the message received from the client
-      # event.data can be sent as text (String) or binary (Array)
       ws.on :message do |event|
-        # parse the message
-        # if (isRequest = true) {broadcast to all robots}
-        # if (isRequest = false) {broadcast to all clients}
-
-        # p [:message, event.data]
-        # @clients.each {|client| client.send(event.data) }
+        p [:message, event.data]
+        @clients.each {|client| client.send(event.data)}
       end
 
       ws.on :close do |event|
@@ -44,13 +38,4 @@ class WebsocketBackend
       @app.call(env)
     end
   end
-
-  ## this is used to escape unsafe HTML content
-  # private
-  # def sanitize(message)
-  #   json = JSON.parse(message)
-  #   json.each {|key, value| json[key] = ERB::Util.html_escape(value) }
-  #   JSON.generate(json)
-  # end
 end
-# end
